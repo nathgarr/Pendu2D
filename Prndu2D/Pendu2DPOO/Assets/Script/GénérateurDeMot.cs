@@ -22,10 +22,4 @@ public class GénérateurDeMot : MonoBehaviour
        int index = Random.Range(0, Hololive.Length);
         return Hololive[index];
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

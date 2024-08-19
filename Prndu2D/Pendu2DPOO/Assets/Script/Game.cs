@@ -11,14 +11,17 @@ public class Game
     //list de lettre jouer
     public List<string> playedLetters;
     public int maxLife =7;
-    public int life {
+
+    // fonction qui permet de setup les pv du joueur 
+    public int Life {
         get {
-            int result=maxLife-wrongLetter;
+            int result=maxLife-WrongLetter;
             if(result < 0 )result = 0;
             return result;
         }
     }
-    public int wrongLetter
+    //fonction qui verifie que la lettre entrer et bien dans le mot sinon rien
+    public int WrongLetter
     {
         get
         {
