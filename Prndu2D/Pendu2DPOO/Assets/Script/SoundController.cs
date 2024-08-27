@@ -6,7 +6,7 @@ using static Unity.VisualScripting.Member;
 public class SoundController : MonoBehaviour
 {
     public static SoundController Instance;
-    [SerializeField] 
+    [SerializeField]
     private AudioSource source;
     [SerializeField]
     private AudioClip painSound;
@@ -19,11 +19,11 @@ public class SoundController : MonoBehaviour
     {
         Instance = this;
     }
-     public void OnFailSound()
+    public void OnFailSound()
     {
         source.PlayOneShot(painSound);
     }
-   public  void OnFindSound() 
+    public void OnFindSound()
     {
         source.PlayOneShot(findingSound);
     }

@@ -40,4 +40,9 @@ public class Game
         this.word = word;
         playedLetters = new List<string>();
     }
+    public void AddPlayedLetter(string letter)
+    {
+        if (playedLetters.Contains(letter))return;
+        playedLetters.Add(letter);
+    }
 }

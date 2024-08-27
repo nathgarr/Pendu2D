@@ -7,7 +7,7 @@ public class GénérateurDeMot : MonoBehaviour
     public static GénérateurDeMot instance;
         /*Tableau de mot a trouver*/
    public  string[] Hololive = new string [] { "okayu", "korone", "miho", "kanatan" ,"cinder", "fubuki" , "subaru" , "sakamatacloe"};
-   public  string[] GameCharacter = new string[] { "noire", "yomis" ,"ceris" , "sonic" , " amy" , "asuna", "kirito"};
+   public  string[] GameCharacter = new string[] { "noire", "yomis" ,"ceris" , "sonic" , "amy" , "asuna", "kirito"};
     /*string[] Anime = new string[] {"" };*/
 
 

@@ -14,7 +14,7 @@ public class PlayerSpawner : MonoBehaviour
     public void OnFail()
     {
         int index = GameManager.instance.game.maxLife-GameManager.instance.game.Life;
-        for (int i = 0; i < index; i++) 
+        for (int i = 0; i < index; i++)
         {
             playerPart[i].SetActive(true);
         }
