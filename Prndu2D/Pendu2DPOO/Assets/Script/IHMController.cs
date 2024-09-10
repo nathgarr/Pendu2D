@@ -6,16 +6,29 @@ using UnityEngine;
 
 public class IHMController : MonoBehaviour
 {
+    public static IHMController Instance;
+    [SerializeField]
+    public GameObject RestartBtn ;
     [SerializeField] TextMeshProUGUI word_To_Find;
 
-    [SerializeField] TextMeshProUGUI letter_played;
+    [SerializeField] TextMeshProUGUI letter_played, score;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         GameManager.instance.onLetterPlayedDel += UpdateWord;
         GameManager.instance.onLetterPlayedDel += UpdatePlayedLetter;
+        UpdateScore();
     }
-
+    public void RefreshAll(Game currentgame)
+    {
+        UpdatePlayedLetter( currentgame);
+        UpdateWord(currentgame);
+    }
     public void UpdateWord(Game currentGame)
     {
         string word = string.Empty;
@@ -36,6 +49,10 @@ public class IHMController : MonoBehaviour
             word += currentGame.playedLetters.Contains(letterTmp) ? letterTmp : " _";
         }
         word_To_Find.text = word;
+        if (letter_played != word_To_Find)
+        {
+            RestartBtn.SetActive(true);
+        }
     }
     public void UpdatePlayedLetter(Game game)
     {
@@ -46,5 +63,16 @@ public class IHMController : MonoBehaviour
         }
         letter_played.text = word;
 
+    }
+    public void UpdateScore()
+    {
+        if (!UserHolder.Exists ) 
+        {
+            score.text = "No User";
+        }
+        else
+        {
+            score.text = UserHolder.Instance.currentUser.currentScore.ToString();
+        }
     }
 }

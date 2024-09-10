@@ -5,5 +5,5 @@ using UnityEngine;
 [System.Serializable]
 public class JSONWrapper 
 {
-    public GameData gameData;
+    public WordRequestResult gameData;
 }

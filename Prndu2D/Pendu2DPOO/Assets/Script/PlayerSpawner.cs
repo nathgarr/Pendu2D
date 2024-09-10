@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
 {
+    public static PlayerSpawner Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
     public GameObject[] playerPart;
     // Start is called before the first frame update
     
@@ -17,6 +22,13 @@ public class PlayerSpawner : MonoBehaviour
         for (int i = 0; i < index; i++)
         {
             playerPart[i].SetActive(true);
+        }
+    }
+    public void OnReplay()
+    {
+        for (int i = 0;i < playerPart.Length;i++)
+        {
+            playerPart[(int)i].SetActive(false);
         }
     }
 }

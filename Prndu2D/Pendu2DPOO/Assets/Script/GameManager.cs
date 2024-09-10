@@ -14,13 +14,11 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public Game game;
     public UnityEvent OnWrongLetter;
-    public GameObject[] LifeGo;
-
-    
-    [SerializeField] TextMeshProUGUI Eror_Left;
     /*string wordToDisplay = " ";*/
     public delegate void OnLetterPlayedDel(Game CurrentGame);
     public OnLetterPlayedDel onLetterPlayedDel;
+    [SerializeField]
+    JSONFileManager JSONFileManager;
     private void Awake()
     {
         instance = this;
@@ -29,13 +27,27 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        StartNewGame();
+        // StartNewGameOnline();
+        /*StartCoroutine(StartNewGameOnline());*/
+        StartNewGameOffline();
     }
-    void StartNewGame()
+    void StartNewGameOffline()
     {
         //recherche dans le tableau hololive pour stocker l'une des valeur du tableau
         string word = GénérateurDeMot.instance.SelectWord();
         game = new Game(word);
+    }
+    public void loadANewGame()
+    {
+        string word = GénérateurDeMot.instance.SelectWord();
+        game = new Game(word);
+        PlayerSpawner.Instance.OnReplay();
+        IHMController.Instance.RefreshAll(game);
+    }
+    IEnumerator StartNewGameOnline()
+    {
+        yield return JSONFileManager.GetWord();
+        game = new Game(JSONFileManager.wordRequestResult.motChoisi);
     }
     public void OnLetterPlayed(string letter)
     {
