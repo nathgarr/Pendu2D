@@ -52,7 +52,7 @@ public class UserHolder : MonoBehaviour
     public List<string> GetAllUsers()
     {
         string path = Application.dataPath + "/Users" ;
-        var filePathArray = Directory.GetFiles(path);
+        var filePathArray = Directory.GetFiles(path, "*.txt");
 
         List<string> users = new List<string>();
         

@@ -26,7 +26,7 @@ public class PlayerSpawner : MonoBehaviour
     }
     public void OnReplay()
     {
-        for (int i = 0;i < playerPart.Length;i++)
+        for (int i = 0;i < playerPart.Length;i++) 
         {
             playerPart[(int)i].SetActive(false);
         }
