@@ -15,6 +15,7 @@ public class OfflineSelectionMenu : MonoBehaviour
     }
     void CheckInternetConection()
     {
+        // si ya internet deverouille le bouton
         onlineBtn.interactable = Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork;
     }
 }

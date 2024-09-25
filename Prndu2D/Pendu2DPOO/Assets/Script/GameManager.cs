@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.Collections.LowLevel.Unsafe;
-using UnityEditor.EditorTools;
 using UnityEngine.Events;
 using Unity.VisualScripting;
-using TMPro.EditorUtilities;
 using UnityEngine.UI;
 using System;
 public class GameManager : MonoBehaviour
@@ -19,6 +17,7 @@ public class GameManager : MonoBehaviour
     public OnLetterPlayedDel onLetterPlayedDel;
     [SerializeField]
     JSONFileManager JSONFileManager;
+    [SerializeField] bool useOnlineWord;
     private void Awake()
     {
         instance = this;
@@ -27,9 +26,15 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        // si il n'y a pas de game object de type userholder et que online word n'est pas tirer alor lancer offline
+        if (!UserHolder.userLoaded && !useOnlineWord)
+        {
+            StartNewGameOffline();
+            return;
+        }
         // StartNewGameOnline();
-        /*StartCoroutine(StartNewGameOnline());*/
-        StartNewGameOffline();
+        StartCoroutine(StartNewGameOnline());
+
     }
     void StartNewGameOffline()
     {
@@ -37,6 +42,7 @@ public class GameManager : MonoBehaviour
         string word = GénérateurDeMot.instance.SelectWord();
         game = new Game(word);
     }
+    //fonction qui a pour but de régénérer les élément du jeux
     public void loadANewGame()
     {
         string word = GénérateurDeMot.instance.SelectWord();
@@ -44,6 +50,7 @@ public class GameManager : MonoBehaviour
         PlayerSpawner.Instance.OnReplay();
         IHMController.Instance.RefreshAll(game);
     }
+    // fonction qui a pour but de convertir les info JSON de L'API en string pour pouvoir les utiliser afin de selectionner un mot
     IEnumerator StartNewGameOnline()
     {
         yield return JSONFileManager.GetWord();
@@ -69,7 +76,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            PlayerHpHud.Instance.PlayerErorLeft();
+            /*PlayerHpHud.Instance.PlayerErorLeft();*/
             OnWrongLetter.Invoke();
             SoundController.Instance.OnFailSound();
         }

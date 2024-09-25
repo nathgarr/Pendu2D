@@ -2,8 +2,6 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
-using UnityEditor.MemoryProfiler;
-using UnityEditor.Playables;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -48,12 +46,15 @@ public class JSONFileManager : MonoBehaviour
 
             switch (WebRequest.result)
             {
+                // si on arrive a contacter l'API alor on recupere le text et on l'envoy pour le stocker 
                 case UnityWebRequest.Result.Success:
                     wordRequestResult = JsonUtility.FromJson<WordRequestResult>(WebRequest.downloadHandler.text);
                     break;
+                    //si ya un probleme de connection alor montre moi l'ereur 
                 case UnityWebRequest.Result.ConnectionError:
                     Debug.LogError("ConnectionError");
                     break;
+                    // si sa vien d'un probleme autre que la connection internet alor quelle ereur cela peut etre
                 case UnityWebRequest.Result.DataProcessingError:
                     Debug.LogError($"Something went wrong {WebRequest.error}");
                     break;

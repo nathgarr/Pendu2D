@@ -21,10 +21,12 @@ public class SoundController : MonoBehaviour
     }
     public void OnFailSound()
     {
+        // jouer ce sont si la fonction et appeller 
         source.PlayOneShot(painSound);
     }
     public void OnFindSound()
     {
+        // jouer ce sont si la fonction et appeller 
         source.PlayOneShot(findingSound);
     }
 

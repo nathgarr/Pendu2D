@@ -11,8 +11,7 @@ public class IHMController : MonoBehaviour
     public GameObject RestartBtn ;
     [SerializeField] TextMeshProUGUI word_To_Find;
 
-    [SerializeField] TextMeshProUGUI letter_played, score;
-    // Start is called before the first frame update
+    [SerializeField] TextMeshProUGUI letter_played, score, userName;
 
     private void Awake()
     {
@@ -26,6 +25,7 @@ public class IHMController : MonoBehaviour
     }
     public void RefreshAll(Game currentgame)
     {
+        // lobjectif et de relancer les fonction pour un reload en douceur des élément
         UpdatePlayedLetter( currentgame);
         UpdateWord(currentgame);
     }
@@ -45,18 +45,20 @@ public class IHMController : MonoBehaviour
             {
                 word += " _";
             }*/
-            //
+            // généré les tiret du mot a trouver
             word += currentGame.playedLetters.Contains(letterTmp) ? letterTmp : " _";
         }
         word_To_Find.text = word;
         if (letter_played != word_To_Find)
         {
+            // fai aparaitre le btn restart lorsque q'une lettre et jouer
             RestartBtn.SetActive(true);
         }
     }
     public void UpdatePlayedLetter(Game game)
     {
         string word = string.Empty;
+        // pour chaque lettre dans played letter ajouter word a letter avec un espace ce qui va remplir le tableau avec un petit espace
         foreach (string letter in game.playedLetters)
         {
             word += letter + " ";
@@ -66,6 +68,7 @@ public class IHMController : MonoBehaviour
     }
     public void UpdateScore()
     {
+        // si le joueur na pas de compte alor ecrire pas d'utilisateur sinon envoyer le score
         if (!UserHolder.Exists ) 
         {
             score.text = "No User";

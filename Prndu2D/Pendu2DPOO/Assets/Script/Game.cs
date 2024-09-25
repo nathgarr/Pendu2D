@@ -26,6 +26,7 @@ public class Game
         get
         {
             int result = 0;
+            // pour chaque lettre dans le tableau playedlettr verifier si le mot contien letter si oui continue et incremente result
             foreach (string letter in playedLetters)
             {
                 if (word.Contains(letter)) continue;
@@ -42,6 +43,7 @@ public class Game
     }
     public void AddPlayedLetter(string letter)
     {
+        // si played letter contien letter alor ajouter letter
         if (playedLetters.Contains(letter))return;
         playedLetters.Add(letter);
     }

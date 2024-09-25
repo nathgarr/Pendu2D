@@ -10,7 +10,6 @@ public class PlayerSpawner : MonoBehaviour
         Instance = this;
     }
     public GameObject[] playerPart;
-    // Start is called before the first frame update
     
         // ajout d'une fonction dans l'evenement Onwrongletter
         /*GameManager.instance.OnWrongLetter.AddListener(OnFail);*/
@@ -21,11 +20,13 @@ public class PlayerSpawner : MonoBehaviour
         int index = GameManager.instance.game.maxLife-GameManager.instance.game.Life;
         for (int i = 0; i < index; i++)
         {
+            // chaque foit que l'on va se tromper faire aparaitre le personnage
             playerPart[i].SetActive(true);
         }
     }
     public void OnReplay()
     {
+        // la dissimuler le joueur pour pouvoir relancer une parti
         for (int i = 0;i < playerPart.Length;i++) 
         {
             playerPart[(int)i].SetActive(false);

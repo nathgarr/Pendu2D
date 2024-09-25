@@ -11,6 +11,7 @@ public class UserProfile
 
     public UserProfile(string name)
     {
+        // donné du profile du joueur qui sont stocker
         this.name = name;
         bestScore = 0;
         currentScore = 0;

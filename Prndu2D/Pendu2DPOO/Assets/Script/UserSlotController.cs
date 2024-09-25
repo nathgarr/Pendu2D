@@ -11,11 +11,13 @@ public class UserSlotController : MonoBehaviour
 
    public void SetUser(string profileStr)
     {
+        //lire le profile json 
         this.profile = JsonUtility.FromJson<UserProfile>(profileStr);
         userName.text = profile.name;
     }
     public void LoadGame()
     {
+        // activé le profile et lancer le jeux
         UserHolder.Instance.SetActiveUser(profile);
         MainMenusControler.Instance.LoadGame();
     }

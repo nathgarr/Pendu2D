@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class WordRequestResult 
 {
+    // stock les donné necéssaire pour piocher un mot via l'api
     public string status = "";
     public string motChoisi = "";
     public int nombreDeMots ;

@@ -25,6 +25,7 @@ public class PlayerHpHud : MonoBehaviour
             Eror_Left.text = "Player Try Left" + " " + MaxLife.ToString();
             if (MaxLife == 0)
             {
+                // si max life et = a 0 alor activer gameover menu
                 gameOverMenus.SetActive(true);
             }
         }

@@ -1,0 +1,1 @@
+{"name":"Albert","bestScore":0,"currentScore":0,"wordPlayed":[]}

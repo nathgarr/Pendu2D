@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Pendu.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: bb29ec2f8cd589b4ebf5d05e2ec9eb05
   - enabled: 1
+    path: Assets/Scenes/Pendu.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 0
     path: Assets/Scenes/UserRegisterAcount.unity
     guid: 6ef31e76a60dc0044b15b32d1f46ab3f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LoadUser.unity
     guid: 606320a478278dc4da8aa5b951476509
   m_configObjects: {}

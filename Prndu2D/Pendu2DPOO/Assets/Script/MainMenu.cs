@@ -16,21 +16,24 @@ public class MainMenusControler : MonoBehaviour
     public void LoadGame()
     {
         // chargement de la scene de jeux
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
    public void DisplayLoadProfileMenu(bool value)
     {
+        // faire aparaitre load menu et desactive selection
         loadMenu.SetActive(value);
         selection.SetActive(false);
     }
     public void DisplayCreationProfileMenu(bool value)
     {
+        // faire aparaitre le menu creation de compte et fermer selection menu
         creationMenu.SetActive(value);
         selection.SetActive(false);
     }
 
     public void Quit()
     {
+        // permet de fermer le jeux 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
